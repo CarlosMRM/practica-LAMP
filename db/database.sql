@@ -10,6 +10,8 @@ CREATE TABLE users (
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE USER IF NOT EXISTS 'lamp_user'@'%';
+CREATE USER IF NOT EXISTS 'lamp_carlos'@'%';
 SET PASSWORD FOR 'lamp_carlos'@'%' = '1234';
 GRANT ALL PRIVILEGES ON lamp_db.* TO 'lamp_carlos'@'%';
+FLUSH PRIVILEGES;
+
