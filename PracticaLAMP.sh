@@ -43,7 +43,7 @@ phpinfo();
 #cd ..
 #sudo mv phpmyadmin/ /var/www/html/
 cd ./scripts
-sudo ./instalaComposer.sh
+./instalaComposer.sh
 cd ..
 #|------------------------>Instalación de GoAccess <-----------------------------|
 echo "deb http://deb.goaccess.io/ $(lsb_release -cs) main" | sudo tee -a /etc/apt/sources.list.d/goaccess.list
