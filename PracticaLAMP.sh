@@ -44,6 +44,8 @@ phpinfo();
 #sudo mv phpmyadmin/ /var/www/html/
 cd ./scripts
 ./instalaComposer.sh
+#|------------------------>Instalación de Adminer<------------------------------|
+./instalaAdminer.sh
 cd ..
 #|------------------------>Instalación de GoAccess <----------------------------|
 echo "deb http://deb.goaccess.io/ $(lsb_release -cs) main" | sudo tee -a /etc/apt/sources.list.d/goaccess.list
