@@ -52,7 +52,6 @@ echo "deb http://deb.goaccess.io/ $(lsb_release -cs) main" | sudo tee -a /etc/ap
 wget -O - https://deb.goaccess.io/gnugpg.key | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install goaccess -y
-echo "La contraseña para Mysql del usuario root es 1234"
 #|----------------------->Agregar base de datos a MySQL<------------------------|
 mysql -u root -p1234 < ./db/database.sql
 #|----------------------->Copia paginas<----------------------------------------|
@@ -61,7 +60,7 @@ sudo cp -r ./paginaMia /var/www/html/
 #|---------------------->Creación de carpeta para Goaccess<---------------------|
 sudo mkdir /var/www/html/stats
 #|---->Creat archivo de contraseñas para el usuario que va a acceder a stats <--|
-echo "Clave para el archivo htpasswd"
+echo "Clave para el archivo htpasswd con el usuario carlos"
 sudo htpasswd -c ~/.htpasswd carlos
 #|--->Modificar el archivo de configuración de Apache para que el directorio stats
 #tenga acceso restringido con usuario y contraseña -----------------------------|
@@ -87,3 +86,10 @@ sudo htpasswd -c ~/.htpasswd carlos
 # sudo goaccess /var/log/apache2/access.log -o /var/www/html/stats/index.html --log-format=COMBINED --real-time-html 
 #Con el siguiente comando se genera estatico, pero da error de formato de hora
 # sudo goaccess /var/log/apache2/access.log -o /var/www/html/stats/index.html
+echo "La contraseña para Mysql del usuario root es 1234"
+echo "La contraseña para Mysql del usuario lamp_carlos es 1234"
+echo "El usuario para acceder a localhost/stats es carlos y la clave, la que se pedia crear en el script"
+echo "Adminer se encuentra en localhost/adminer.php"
+echo "Antes de hacer nada hay que modificar el fichero de apache con: sudo nano /etc/apache2/sites-enabled/000-default.conf"
+echo "Para crear el archivo en tiempo real de Goaccess: sudo goaccess /var/log/apache2/access.log -o /var/www/html/stats/index.html --log-format=COMBINED --real-time-html"
+
