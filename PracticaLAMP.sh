@@ -61,6 +61,7 @@ sudo cp -r ./paginaMia /var/www/html/
 #|---------------------->Creación de carpeta para Goaccess<---------------------|
 sudo mkdir /var/www/html/stats
 #|---->Creat archivo de contraseñas para el usuario que va a acceder a stats <--|
+echo "Clave para el archivo htpasswd"
 sudo htpasswd -c ~/.htpasswd carlos
 #|--->Modificar el archivo de configuración de Apache para que el directorio stats
 #tenga acceso restringido con usuario y contraseña -----------------------------|
@@ -75,10 +76,14 @@ sudo htpasswd -c ~/.htpasswd carlos
 #          AuthType Basic
 #          AuthName "Acceso restringido"
 #          AuthBasicProvider file
-#          AuthUserFile "/home/usuario/.htpasswd"
+#          AuthUserFile "/home/devops/.htpasswd"
 #          Require valid-user
 #        </Directory>
 #
 #        ErrorLog ${APACHE_LOG_DIR}/error.log
 #        CustomLog ${APACHE_LOG_DIR}/access.log combined
 #</VirtualHost>
+#Con el siguiente comando se genera un fichero en tiempo real
+# sudo goaccess /var/log/apache2/access.log -o /var/www/html/stats/index.html --log-format=COMBINED --real-time-html 
+#Con el siguiente comando se genera estatico, pero da error de formato de hora
+# sudo goaccess /var/log/apache2/access.log -o /var/www/html/stats/index.html
